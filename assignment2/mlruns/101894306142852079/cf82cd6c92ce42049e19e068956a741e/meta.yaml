@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sayantika/Desktop/DS2sem4/Applied%20Machine%20Leaning/Applied-ML/assignment2/mlruns/101894306142852079/cf82cd6c92ce42049e19e068956a741e/artifacts
+end_time: 1708440198219
+entry_point_name: ''
+experiment_id: '101894306142852079'
+lifecycle_stage: active
+run_id: cf82cd6c92ce42049e19e068956a741e
+run_name: Naive Bayes
+run_uuid: cf82cd6c92ce42049e19e068956a741e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1708440195959
+status: 3
+tags: []
+user_id: sayantika
