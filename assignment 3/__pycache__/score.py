@@ -1,22 +1,21 @@
-import sklearn
-import numpy as np
-import pandas as pd
-import pickle
+import joblib
 from typing import Tuple
-from sklearn.pipeline import Pipeline
 
-with open("/home/sayantika/Desktop/DS2sem4/Applied Machine Leaning/Applied-ML/best_model.pkl", 'rb') as file:
-    best_model = pickle.load(file)
+def score(text: str, model, threshold=0.5) -> Tuple[bool, float]:
+    try:
+        # Get the propensity score for the positive class
+        propensity = model.decision_function([text])[0]
+        prediction = (propensity >= threshold)
+        
+        return bool(prediction), propensity
+    except Exception as e:
+        print("Error scoring text:", e)
+        return False, 0.0
 
+# Load the model
+try:
+    # Adjust the path to where your model is stored
+    best_model = joblib.load("/home/sayantika/Desktop/DS2sem4/Applied Machine Leaning/Applied-ML/assignment 3/best_model.joblib")
 
-
-def score(text:str, model:Pipeline, threshold=0.5) -> Tuple[bool , float]:
-   
-    # Vectorize the text
-    vect_text = model.named_steps['tfidf'].transform([text])
-    
-    # Get the propensity score for the positive class
-    propensity = model.named_steps['clf'].predict_proba(vect_text)[:, 1][0]
-    prediction = (propensity >= threshold)
-    
-    return bool(prediction), propensity
+except Exception as e:
+    print("Error loading model file:", e)
